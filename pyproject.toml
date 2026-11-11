@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "koda"
+version = "0.1.0"
+description = "Koda — Jarvis-Class Personal AI OS powered by OpenCode zero-cost multi-model routing"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi>=0.116.0",
+  "httpx>=0.28.0",
+  "pydantic>=2.12.0",
+  "pydantic-settings>=2.13.0",
+  "uvicorn>=0.35.0",
+  "psutil>=7.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=9.0.0",
+]
+
+[project.scripts]
+koda = "koda.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["koda*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-ra -q"
